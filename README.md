@@ -6,3 +6,5 @@ A repository of my completed and in progress Udemy courses.
   * [The Ultimate MySQL Bootcamp: Go from SQL Beginner to Expert](https://www.udemy.com/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/learn/v4/overview) Colt Steele
   * [The Advanced Web Developer Bootcamp](https://www.udemy.com/the-advanced-web-developer-bootcamp/learn/v4/overview) Colt Steele
   * [JavaScript: Understanding the Weird Parts](https://www.udemy.com/understand-javascript/learn/v4/overview) Anthony Alicea
+
+  Courses I haven't started yet are not included in this repo.
