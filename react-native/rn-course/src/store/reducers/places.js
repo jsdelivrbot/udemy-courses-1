@@ -16,13 +16,13 @@ const reducer = (state = initalState, action) => {
                     image: {
                         uri: "https://lh3.googleusercontent.com/_orhXmFAPaQhWc9464aACtB4DP7ccO7CaYF4fQExM508bi8YjAo54GHHw1qMhCKWJg=h900"
                     }
-                }) 
+                })
             };
         case DELETE_PLACE:
             return {
                 ...state,
                 places: state.places.filter(place => {
-                    return place.key !== state.selectedPlace.key;
+                    return place.key !== action.placeKey;
                 })
             };
         default:
