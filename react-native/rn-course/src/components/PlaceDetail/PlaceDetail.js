@@ -16,11 +16,6 @@ const placeDetail = props => {
     }
 
     return (
-        <Modal 
-            visible={props.selectedPlace !== null} 
-            animationType="slide"
-            onRequestClose={props.onModalClosed}
-        >
             <View style={styles.modalContainer}>
                 {modalContent}
                 <View>
@@ -33,13 +28,12 @@ const placeDetail = props => {
                             />
                         </View>
                     </TouchableOpacity>
-                    <Button 
+                    <Button
                         title="Close"
                         onPress={props.onModalClosed}
                     />
                 </View>
             </View>
-      </Modal>
     );
 };
 
