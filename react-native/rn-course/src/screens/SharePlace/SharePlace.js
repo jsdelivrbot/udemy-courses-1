@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView, Image } from 'react-native';
 import { connect } from 'react-redux';
 
-import PlaceInput from '../../components/PlaceInput/PlaceInput';
 import { addPlace } from '../../store/actions/index';
-import DefaultInput from '../../components/UI/DefaultInput/DefaultInput';
+import PlaceInput from '../../components/PlaceInput/PlaceInput';
 import MainText from '../../components/UI/MainText/MainText';
 import HeadingText from '../../components/UI/HeadingText/HeadingText';
-import imagePlaceholder from '../../assets/nice-place.jpg';
+import PickImage from '../../components/PickImage/PickImage';
+import PickLocation from '../../components/PickImage/PickImage';
 
 class SharePlaceScreen extends Component {
     constructor(props) {
@@ -36,25 +36,12 @@ class SharePlaceScreen extends Component {
                     <MainText>
                         <HeadingText>Share a Place with us!</HeadingText>
                     </MainText>
-                    <View style={styles.placeholder}>
-                        <Image source={imagePlaceholder} style={styles.previewImage} />
-                    </View>
+                    <PickImage />
+                    <PickLocation />
+                    <PlaceInput />
                     <View style={styles.button}>
-                        <Button title="Pick Image" onPress={() => alert('pick iamge')} />
+                        <Button title="Share the Place!" onPress={() => alert('share place')} />
                     </View>
-                    <View style={styles.placeholder}>
-                        <Text>Map</Text>
-                    </View>
-                    <View style={styles.button}>
-                        <Button title="Locate Me" onPress={() => alert('locate me')} />
-                    </View>
-                    <DefaultInput placeholder="Place Name" />
-                    <View style={styles.button}>
-                        <Button title="Share Place" onPress={() => alert('share place')} />
-                    </View>
-                    <PlaceInput
-                        onPlaceAdded={this.placeAddedHandler}
-                    />
                 </View>
             </ScrollView>
         );

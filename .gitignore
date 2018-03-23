@@ -99,5 +99,6 @@ node_modules
 /coverage
 /third-party
 
-# Practice directory I don't want committed
+# Practice directories I don't want committed
 algoCasts-solo
+algoCasts-3
