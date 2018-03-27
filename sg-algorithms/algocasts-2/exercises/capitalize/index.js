@@ -8,26 +8,9 @@
 //   capitalize('look, it is working!') --> 'Look, It Is Working!'
 
 function capitalize(str) {
-  let result = '';
-
-  for (let i = 0; i < str.length; i++) {
-    if (i === 0) {
-      result += str[i].toUpperCase();
-    } else if (str[i - 1] === ' ') {
-      result += str[i].toUpperCase();
-    } else {
-      result += str[i]
-    }
-  }
-  return result;
+    return str.split(' ').map(word => {
+        return word[0].toUpperCase() + word.slice(1)
+    }).join(' ')
 }
 
 module.exports = capitalize;
-
-  // const words = [];
-
-  // for (let word of str.split(' ')) {
-  //   words.push(word[0].toUpperCase() + word.slice(1));
-  // }
-
-  // return words.join(' ');

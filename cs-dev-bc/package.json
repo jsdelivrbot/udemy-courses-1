@@ -1,0 +1,19 @@
+{
+    "name": "cs-dev-bc",
+    "version": "0.1.0",
+    "description": "colt steele advanced developer's bootcamp",
+    "main": "",
+    "scripts": {
+        "test": ""
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "author": "kevvor",
+    "license": "ISC",
+    "dependencies": {
+        "jquery": "^3.3.1",
+        "node-fetch": "^2.1.1"
+    }
+}

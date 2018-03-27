@@ -10,10 +10,10 @@ class Events {
 
   // Register an event handler
   on(eventName, callback) {
-    if (!this.events[eventName]) {
-      this.events[eventName] = [callback];
+    if (this.events[eventName]) {
+      this.events[eventName].push(callback);
     } else {
-      this.events[eventName].push(callback)
+      this.events[eventName] = [callback];
     }
   }
 
@@ -21,8 +21,8 @@ class Events {
   // with a given eventName
   trigger(eventName) {
     if (this.events[eventName]) {
-      for (let callback of this.events[eventName]) {
-        callback();
+      for (let cb of this.events[eventName]) {
+        cb();
       }
     }
   }
@@ -30,7 +30,6 @@ class Events {
   // Remove all event handlers associated
   // with the given eventName
   off(eventName) {
-    // this.events[eventName] = null;
     delete this.events[eventName];
   }
 }

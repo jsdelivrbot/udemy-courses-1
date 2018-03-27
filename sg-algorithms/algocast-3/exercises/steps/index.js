@@ -18,37 +18,36 @@
 //       '####'
 
 function steps(n, row = 0, stair = '') {
-    if (n === row) {
+    if (row === n) {
         return;
     }
 
     if (n === stair.length) {
-        console.log(stair);
-        return steps(n, row + 1);
+        console.log(stair)
+        return steps(n, row + 1)
     }
 
     if (stair.length <= row) {
-        stair += '#';
+        steps(n, row, stair += '#')
     } else {
-        stair += ' ';
+        steps(n, row, stair += ' ')
     }
-
-    steps(n, row, stair);
 }
 
 module.exports = steps;
 
 // function steps(n) {
-//     for (let row = 0; row < n; row++) {
-//         let stair = '';
+// for (let row = 0; row < n; row++) {
+//     let level = '';
 
-//         for (let column = 0; column < n; column++) {
-//             if (column <= row) {
-//                 stair += '#';
-//             } else {
-//                 stair += ' ';
-//             }
+//     for (let column = 0; column < n; column++) {
+//         if (column <= row) {
+//             level += '#'
+//         } else {
+//             level += ' '
 //         }
-//         console.log(stair);
 //     }
+
+//     console.log(level)
+// }
 // }
