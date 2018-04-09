@@ -13,6 +13,8 @@
     "author": "kevvor",
     "license": "ISC",
     "dependencies": {
+        "axios": "^0.18.0",
+        "get-json": "^1.0.0",
         "jquery": "^3.3.1",
         "node-fetch": "^2.1.1"
     }

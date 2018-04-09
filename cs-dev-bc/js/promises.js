@@ -7,7 +7,6 @@ function getMostFollowers(...usernames) {
             const max = data.sort((a, b) => a.followers < b.followers)[0];
             return `${max.name} has the most followers with ${max.followers}.`;
         })
-
 }
 
 getMostFollowers('kevvor', 'elie', 'tigarcia')

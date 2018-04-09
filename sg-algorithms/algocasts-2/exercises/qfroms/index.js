@@ -14,6 +14,6 @@
 
 const Stack = require('./stack');
 
-class Queue {}
+class Queue { }
 
 module.exports = Queue;
