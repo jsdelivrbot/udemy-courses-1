@@ -49,36 +49,7 @@ starWarsString(1)
                     })
             })
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 // /* Async Functions */
 // const getJSON = require('get-json');
 

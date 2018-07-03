@@ -3,20 +3,23 @@ document.addEventListener('DOMContentLoaded', function () {
   var guessCount = 4;
   var password = '';
 
-  var start = document.getElementById('start');
-  start.addEventListener('click', () => {
-    toggleClasses(document.getElementById('start-screen'), 'hide', 'show');
-    toggleClasses(document.getElementById('game-screen'), 'hide', 'show');
-    startGame();
+  var start = d3.select('#start')
+                .on('click', () => {
+                  toggleClasses(d3.select('#start-screen'), 'hide', 'show');
+                  toggleClasses(d3.select('#game-screen'), 'hide', 'show');
+                  startGame();
   });
 
-  function toggleClasses(element, ...classNames) {
-    classNames.forEach(name => element.classList.toggle(name));
+  function toggleClasses(selection) {
+    for (var i = 1; i < arguments.length; i++) {
+      var classIsSet = selection.classed(arguments[i]);
+      selection.classed(arguments[i], !classIsSet);
+    }
   }
 
   function startGame() {
     // get random words and append them to the DOM
-    var wordList = document.getElementById("word-list");
+    var wordList = d3.select("#word-list");
     var randomWords = getRandomValues(words, wordCount);
     randomWords.forEach((word) => {
       var li = document.createElement("li");
@@ -52,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function setGuessCount(newCount) {
     guessCount = newCount;
-    document.getElementById("guesses-remaining").innerText = `Guesses remaining: ${guessCount}.`;
+    d3.select("#guesses-remaining").innerText = `Guesses remaining: ${guessCount}.`;
   }
 
   function updateGame(e) {
@@ -66,10 +69,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // check whether the game is over
       if (similarityScore === password.length) {
-        toggleClasses(document.getElementById("winner"), 'hide', 'show');
+        toggleClasses(d3.select("#winner"), 'hide', 'show');
         this.removeEventListener('click', updateGame);
       } else if (guessCount === 0) {
-        toggleClasses(document.getElementById("loser"), 'hide', 'show');
+        toggleClasses(d3.select("#loser"), 'hide', 'show');
         this.removeEventListener('click', updateGame);
       }
     }
