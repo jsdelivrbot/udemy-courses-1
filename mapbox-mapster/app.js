@@ -1,10 +1,10 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2V2dm9yIiwiYSI6ImNqaWx0ejJkbDJnZ28zcG15NjE5MmR5cGcifQ.3tYja-0fW43DkjRR-ZlmqQ';
 const map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-    center: [74, 40], // starting position [lng, lat]
-    zoom: 8,
-    pitch: 60,
+    style: 'mapbox://styles/kevvor/cjj5vupuh0w0q2robtmfdywd0', // stylesheet location
+    center: [2.1734, 41.3851], // starting position [lng, lat]
+    zoom: 14,
+    pitch: 30,
     rotation: -30
 });
 
@@ -18,8 +18,69 @@ map.addControl(new mapboxgl.GeolocateControl({
 }));
 
 map.on('load', () => {
-    map.addSource("osoyoos-trip", {
+    map.addSource('streets', {
+        'type': 'vector',
+        'url' : 'mapbox://mapbox.mapbox-streets-v7'
+    });
+
+    map.addSource('random_shapes', {
         "type": "geojson",
-        "data": osoyoos_geojson
-    })
-})
+        "data": custom_poly_1
+    });
+
+    map.addLayer({
+        'id': 'mapbox-roads',
+        'type': 'line',
+        'source': 'streets',
+        'source-layer': 'road',
+        'paint': {
+            'line-color': 'pink',
+            'line-opacity': 1
+        }
+    });
+
+    map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': 'composite',
+        'source-layer': 'trip_json-dcjm3r',
+        'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': {
+            'line-color': '#3498db',
+            'line-width': 4
+        }
+    });
+
+    map.addLayer({
+        id: 'poly_1',
+        type: 'fill',
+        source: 'random_shapes',
+        paint: {
+            'fill-color': '#000000'
+        }
+    });
+
+    geojson.features.forEach(function(marker) {
+        // create a DOM element for the marker
+        var el = document.createElement('div');
+        el.className = 'marker';
+        el.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
+        el.style.width = marker.properties.iconSize[0] + 'px';
+        el.style.height = marker.properties.iconSize[1] + 'px';
+
+        el.addEventListener('click', function() {
+            window.alert(marker.properties.message);
+        });
+
+        // add marker to map
+        new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+    });
+
+
+});
+
