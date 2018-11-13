@@ -23,10 +23,20 @@ map.on('load', () => {
         'url' : 'mapbox://mapbox.mapbox-streets-v7'
     });
 
-    map.addSource('random_shapes', {
+    map.addSource('fill', {
         "type": "geojson",
         "data": custom_poly_1
     });
+
+    map.addSource('line', {
+        "type": "geojson",
+        "data": custom_poly_2
+    });
+
+    map.addSource('circle', {
+        type: 'geojson',
+        data: custom_poly_3
+    })
 
     map.addLayer({
         'id': 'mapbox-roads',
@@ -56,12 +66,33 @@ map.on('load', () => {
 
     map.addLayer({
         id: 'poly_1',
-        type: 'fill',
-        source: 'random_shapes',
+        type: 'fill-extrusion',
+        source: 'fill',
         paint: {
-            'fill-color': '#000000'
+            'fill-extrusion-color': 'grey',
+            'fill-extrusion-height': 1000000
         }
     });
+
+    map.addLayer({
+        id: 'circle-1',
+        type: 'circle',
+        source: 'circle',
+        paint: {
+            'circle-radius': 50,
+            'circle-color': '#ffffff'
+        }
+    })
+
+    // map.addLayer({
+    //     id: 'poly_2',
+    //     type: 'line',
+    //     source: 'line',
+    //     paint: {
+    //         'line-color': '#000000',
+    //         'line-width': 4
+    //     }
+    // });
 
     geojson.features.forEach(function(marker) {
         // create a DOM element for the marker
